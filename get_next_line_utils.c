@@ -35,7 +35,7 @@ int find(char*str, int start, int end, char target)
 	return -1;
 }
 
-void * ft_memcpy(void *restrict dst, const void *restrict src, int n)
+void * ft_memcpy(char *dst, const char *src, int n)
 {
     int i;
 
