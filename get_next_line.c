@@ -12,8 +12,10 @@ static int read_to_buf(int fd, char*buf, int *idx, int*end)
 		*end += BUFFER_SIZE;
 		temp = find(buf, *end - BUFFER_SIZE, *end, '\n');
 	} while (temp == -1 && ret == BUFFER_SIZE);
-	if (ret != BUFFER_SIZE && ret > -1)
+	if (ret != BUFFER_SIZE && ret > -1){
+		*end += ret - BUFFER_SIZE;
 		*idx += ret - 1;
+	}
 	else
 		*idx = temp;
 	return ret;
@@ -33,21 +35,14 @@ char* get_next_line(int fd)
 		prev_fd = fd;
 		idx = 0;
 	}
+	read_to_buf(fd, buf, &idx, &end);
 	if (idx == -1)
 		return 0;
-	switch (read_to_buf(fd, buf, &idx, &end))
-	{
-		case -1:
-			return 0;
-		case 0:
-			if (idx == 0)
-				return 0;
-			end = idx;
-		default:
-			end = end - idx - 1;
-	}
+	end = end - idx - 1;
 	txt = substr(buf, 0, idx + 1);
 	ft_memcpy(buf, buf + idx + 1, end);
+	
 	idx = end;
+	
 	return txt;
 }
