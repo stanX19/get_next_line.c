@@ -1,6 +1,7 @@
 #include "get_next_line.h"
 #include <stdio.h>
 #include <string.h>
+
 char* substr(char* str, int start, int end)
 {
 	char* ret;
@@ -14,18 +15,37 @@ char* substr(char* str, int start, int end)
 	return ret;
 }
 
-char* read_to_break(int fd, int* ended)
+void *ft_memset(void*b, int c, size_t len)
 {
-	int idx;
-	char txt[320000];
-	memset(txt, 0, 320000);
-	idx = -1;
-	do{
-		read(fd, txt + (++idx), 1);
+	size_t i;
+
+	i = 0;
+	while (i < len)
+		((char*)(b))[i++] = c;
+	return b;
+}
+
+int find(char*str, int start, int end, char target)
+{
+	while (start < end && str[start])
+	{
+		if (str[start++] == target)
+			return start - 1;
 	}
-	while (txt[idx] && txt[idx] != '\n');
-	
-	if (!txt[idx])
-		*ended = 1;
-	return substr(txt, 0, ++idx);
+	return -1;
+}
+
+void * ft_memcpy(void *restrict dst, const void *restrict src, int n)
+{
+    int i;
+
+	if (dst == src)
+		return dst;
+    i = 0;
+    while (i < n)
+    {
+        ((char*)dst)[i] = ((char*)src)[i];
+        i++;
+    }
+    return dst;
 }

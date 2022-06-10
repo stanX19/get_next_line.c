@@ -4,20 +4,21 @@
 
 int main() {
 	int fd;
-	//int fd2;
+	int idx;
 	char* line;
 	//int start;
 	//line = get_next_line(fd);
 	//line = malloc(1024 * sizeof(char));
 
 	//start = 0;
+	idx = 0;
 	fd = open("test.txt", O_RDONLY);
 	do {
-		
-		line = get_next_line2(fd);
-		
+		idx++;
+		line = get_next_line(fd);
+
 		if (line) {
-			printf("%s", line);
+			printf("%s$", line);
 			free(line);
 		}
 	} while (line);
