@@ -14,7 +14,7 @@ char* substr(char* str, int start, int end)
 	return ret;
 }
 
-char* read_to_break(int fd, int* start)
+char* read_to_break(int fd, int* ended)
 {
 	int idx;
 	char txt[320000];
@@ -26,9 +26,6 @@ char* read_to_break(int fd, int* start)
 	while (txt[idx] && txt[idx] != '\n');
 	
 	if (!txt[idx])
-		*start = -1;
-	else
-		*start += idx + 1;
-	
-	return substr(txt, 0, idx);
+		*ended = 1;
+	return substr(txt, 0, ++idx);
 }

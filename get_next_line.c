@@ -22,3 +22,16 @@ char* get_next_line(int fd)
 	start = end;
 	return txt;
 }
+
+char* get_next_line2(int fd) {
+	static int prev;
+	static int ended;
+
+	if (prev != fd) {
+		prev = fd;
+		ended = 0;
+	}
+	if (!ended)
+		return read_to_break(fd, &ended);
+	return 0;
+}

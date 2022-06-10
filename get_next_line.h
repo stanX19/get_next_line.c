@@ -4,6 +4,7 @@
 #include <stdlib.h>
 
 char* get_next_line(int fd);
+char* get_next_line2(int fd);
 char* substr(char* str, int start, int end);
 char* read_to_break(int fd, int *start);
 
