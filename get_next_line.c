@@ -7,11 +7,13 @@ static int read_to_buf(int fd, char*buf, int *idx, int*end)
 	int temp;
 
 	*end = *idx;
-	do {
+	temp = find(buf, 0, *end, '\n');
+	ret = BUFFER_SIZE;
+	while (temp == -1 && ret == BUFFER_SIZE) {
 		ret = read(fd, buf + *end, BUFFER_SIZE);
 		*end += BUFFER_SIZE;
 		temp = find(buf, *end - BUFFER_SIZE, *end, '\n');
-	} while (temp == -1 && ret == BUFFER_SIZE);
+	} 
 	if (ret != BUFFER_SIZE && ret > -1){
 		*end += ret - BUFFER_SIZE;
 		*idx += ret - 1;
