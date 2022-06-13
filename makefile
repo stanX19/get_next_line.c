@@ -16,3 +16,4 @@ fclean: clean
 push: fclean
 	git add .
 	git commit -m $(time)
+	git push
