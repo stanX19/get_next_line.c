@@ -1,4 +1,4 @@
-DATE = $$(date -I)
+time=$$(date +'%Y%m%d-%H%M%S')
 
 run:
 	gcc -Wall -Wextra -Werror -fsanitize=address -g3 *.c && ./a.out
@@ -15,4 +15,4 @@ fclean: clean
 	rm -rf gnlTester
 push: fclean
 	git add .
-	git commit -m $(DATE)
+	git commit -m $(time)
