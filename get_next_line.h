@@ -6,7 +6,6 @@
 #  define BUFFER_SIZE 10000000
 # endif
 char* get_next_line(int fd);
-char* get_next_line2(int fd);
 char* substr(char* str, int start, int end);
 void *ft_memset(void*b, int c, size_t len);
 int find(char*str, int start, int end, char target);

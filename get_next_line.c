@@ -29,13 +29,13 @@ char* get_next_line(int fd)
 {
 	static int prev_fd;
 	static int idx;
-	static char buf[320000];
+	static char buf[10000000];
 	int end;
 	char* txt;
 	
 	if (prev_fd != fd)
 	{
-		ft_memset(buf, 0, sizeof(char) * 320000);
+		ft_memset(buf, 0, sizeof(char) * 10000000);
 		prev_fd = fd;
 		idx = 0;
 	}
