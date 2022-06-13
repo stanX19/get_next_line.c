@@ -1,4 +1,4 @@
-time="$$(date +'%Y-%m-%d %H-%M-%S')"
+time="$$(date +'%Y-%m-%d %H:%M:%S')"
 
 run:
 	gcc -Wall -Wextra -Werror -fsanitize=address -g3 *.c && ./a.out
