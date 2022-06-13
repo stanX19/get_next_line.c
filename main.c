@@ -16,11 +16,10 @@ int main() {
 	do {
 		idx++;
 		line = get_next_line(fd);
-
-		if (line) {
-			printf("%s", line);
+		printf("%s", line);
+		if (line)
 			free(line);
-		}
-	} while (line && idx < 10);
+	} while (line && idx < 1000);
+	printf("$\n");
 	close(fd);
 }

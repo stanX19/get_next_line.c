@@ -7,7 +7,7 @@ char* substr(char* str, int start, int end)
 	char* ret;
 	int idx;
 
-	if (end <= start)
+	if (start >= end)
 		return 0;
 	idx = 0;
 	ret = malloc((sizeof(char) * (end - start + 2)));

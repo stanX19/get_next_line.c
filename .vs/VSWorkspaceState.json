@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\gnlTester",
+    "\\gnlTester\\files"
   ],
-  "SelectedNode": "\\get_next_line.h",
+  "SelectedNode": "\\gnlTester\\files\\41_with_nl",
   "PreviewInSolutionExplorer": false
 }
