@@ -37,12 +37,12 @@ static int read_to_buf(int fd, char*buf, int *idx, int*end)
 
 char* get_next_line(int fd)
 {
-	static char buffers[MAX_FD][10000000];
+	static char buffers[MAX_FD + 1][10000000];
 	int idx;
 	int end;
 	char* txt;
 
-	if (fd < 0 || fd >= MAX_FD)
+	if (fd < 0 || fd > MAX_FD)
 		return 0;
 	idx = ft_strlen(buffers[fd]);
 	if (read_to_buf(fd, buffers[fd], &idx, &end) == -1 || idx == -1)
